@@ -1,4 +1,6 @@
 class Square
+	attr_reader :square
+
 	def initialize
 		@square = 3.times.collect{ %w{. . .} }
 	end
@@ -10,6 +12,9 @@ class Square
 		return right_rotate! if direction == :right
 		3.times{ right_rotate! }
 		#TODO fail if not left?
+	end
+	def zip(with)
+		@square.zip(with.square)
 	end
 	def to_s
 		@square.collect{|row| row.join }.join "\n"
