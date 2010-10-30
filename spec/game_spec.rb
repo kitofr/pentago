@@ -10,7 +10,21 @@ describe "a pentago game" do
 ......
 ......}
 	end
-	it "should end when 5 balls are in a row"
+	it "should end when 5 balls are in a row" do
+		game = Game.new
+		game.place(0,1,'w')
+		game.place(0,2,'w')
+		game.place(0,3,'w')
+		game.place(0,4,'w')
+		game.place(0,5,'w')
+		game.ended?.should be true
+		game.to_s.should == %{.w....
+.w....
+.w....
+.w....
+.w....
+......}
+	end
 	it "should have 2 players"
 	context "is turn based" do
 		it "and starts by the white player placing a ball"
