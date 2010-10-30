@@ -7,7 +7,10 @@ describe "a pentago game" do
 	it "should be possible to rotate a square right"
 	it "should end when 5 balls are in a row"
 	it "should have 2 players"
+	context "is turn based" do
+		it "and starts by the white player placing a ball"
+		it "and after white, the black player place a ball"
+	end
 	#subjects game_field, square, bit, ball, player
 	#verbs rotate, end
 end
-
