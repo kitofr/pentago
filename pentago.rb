@@ -11,6 +11,21 @@ describe "a pentago game" do
 		it "and starts by the white player placing a ball"
 		it "and after white, the black player place a ball"
 	end
-	#subjects game_field, square, bit, ball, player
+	#subjects game, square, bit, ball, player
 	#verbs rotate, end
+end
+
+describe "a square" do
+	it "should consist of 3x3 bits" do
+		square = Square.new
+		square.print.should == """...
+		...
+		..."""
+	end
+
+	it "should be able to rotate left"
+	it "should be able to rotate right"
+end
+
+class Square
 end
