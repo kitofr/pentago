@@ -18,14 +18,44 @@ end
 describe "a square" do
 	it "should consist of 3x3 bits" do
 		square = Square.new
-		square.print.should == """...
-		...
-		..."""
+		square.to_s.should == %{...
+...
+...}
 	end
 
+	it "should be able to hold a white ball" do
+		square = Square.new
+		square.place(1,1, 'w')
+		square.to_s.should == %{...
+.w.
+...}
+	end
+	it "should not be possible to place a ball on top of another ball" do
+		#TODO think i want to raise exceptions here...
+		square = Square.new
+		square.place(1,1,'w')
+		square.place(1,1,'b').should be false
+		square.to_s.should == %{...
+.w.
+...}
+	end
 	it "should be able to rotate left"
 	it "should be able to rotate right"
 end
 
+class NotAllowedError < RuntimeError
+end
+
+
 class Square
+	def initialize
+		@square = 3.times.collect{ %w{. . .} }
+	end
+	def place(x,y,who)
+		return false unless @square[x][y] == '.'
+		@square[x][y] = who
+	end
+	def to_s
+		@square.collect{|row| row.join }.join "\n"
+	end
 end
