@@ -39,8 +39,37 @@ describe "a square" do
 .w.
 ...}
 	end
-	it "should be able to rotate left"
-	it "should be able to rotate right"
+
+	it "should be able to rotate right" do
+		Square.class_eval{ 
+			def initialize
+				@square = [%w{1 2 3}]
+				@square[1] = %w{4 5 6}
+				@square[2] = %w{7 8 9}
+			end
+		}
+		square = Square.new
+		square.rotate! :right
+		square.to_s.should == %{741
+852
+963}
+	end
+
+	it "should be able to rotate left" do
+		Square.class_eval{ 
+			def initialize
+				@square = [%w{1 2 3}]
+				@square[1] = %w{4 5 6}
+				@square[2] = %w{7 8 9}
+			end
+		}
+		square = Square.new
+		square.rotate! :left
+		square.to_s.should == %{369
+258
+147}
+
+	end
 end
 
 class NotAllowedError < RuntimeError
@@ -55,7 +84,32 @@ class Square
 		return false unless @square[x][y] == '.'
 		@square[x][y] = who
 	end
+	def rotate!(direction)
+		return right_rotate! if direction == :right
+		
+		3.times{ right_rotate! }
+	end
 	def to_s
 		@square.collect{|row| row.join }.join "\n"
+	end
+
+	private
+	def right_rotate!
+		tmp = [%w{ 0 0 0 }]
+		tmp[1] = [%w{ 0 0 0 }]
+		tmp[2] = [%w{ 0 0 0 }]
+		tmp[0][0] = @square[2][0]
+		tmp[0][1] = @square[1][0]
+		tmp[0][2] = @square[0][0]
+
+		tmp[1][0] = @square[2][1]
+		tmp[1][1] = @square[1][1]
+		tmp[1][2] = @square[0][1]
+
+		tmp[2][0] = @square[2][2]
+		tmp[2][1] = @square[1][2]
+		tmp[2][2] = @square[0][2]
+
+		@square = tmp
 	end
 end
