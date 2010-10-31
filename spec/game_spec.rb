@@ -126,6 +126,11 @@ describe "a pentago game" do
 	it "should end when 5 balls are in a horizontal row"
 	it "should end when 5 balls are in a vertical row"
 
+	context "a turn" do
+		it "is one ball placement and a square rotation"
+		it "can end the game if 5 balls are in a row"
+	end
+
 	context "is turn based" do
 		it "should have 2 players"
 		it "and starts by the white player placing a ball"
@@ -133,4 +138,9 @@ describe "a pentago game" do
 	end
 	#subjects game, square, bit, ball, player
 	#verbs rotate, end
+end
+
+describe "a player" do
+	it "has 18 balls to place"
+	it "is either white or black"
 end
