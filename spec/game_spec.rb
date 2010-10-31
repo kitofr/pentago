@@ -43,12 +43,13 @@ describe "a pentago game" do
 		game.place(1,2,'l')
 		game.place(1,3,'l')
 		game.place(1,4,'o')
+		game.place(4,5,'!')
 		game.to_s.should == %{.h....
 .e....
 .l....
 .l....
 .o....
-......}
+....!.}
 	end
 
 	it "should be possible to rotate first square" do
@@ -125,19 +126,20 @@ describe "a pentago game" do
 
 	it "should end when 5 balls are in a horizontal row"
 	it "should end when 5 balls are in a vertical row"
+	it "should end when 5 balls are in a diagonal row"
 
 	context "a turn" do
+		it "can end prematurely if the player places a ball in such way that it completes the game (without a turn)"
 		it "is one ball placement and a square rotation"
-		it "can end the game if 5 balls are in a row"
 	end
+
+	it "should be a draw if both players has 5 balls in a row after a completed turn"
 
 	context "is turn based" do
 		it "should have 2 players"
 		it "and starts by the white player placing a ball"
 		it "and after white, the black player place a ball"
 	end
-	#subjects game, square, bit, ball, player
-	#verbs rotate, end
 end
 
 describe "a player" do
