@@ -51,6 +51,24 @@ describe "a pentago game" do
 ......}
 	end
 
+	it "should be possible to rotate each square" do
+		sq = [%w{1 2 3}]
+		sq[1] = %w{4 5 6}
+		sq[2] = %w{7 8 9}
+		squares = []
+		4.times { squares << Square.new(sq) }
+		
+		game = Game.create squares
+		game.rotate(0, :right)
+		game.to_s.should == 
+%{741123
+852456
+963789
+123123
+456456
+789789}
+	end
+
 	it "should end when 5 balls are in a horizontal row"
 	it "should end when 5 balls are in a vertical row"
 
