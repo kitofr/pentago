@@ -37,7 +37,6 @@ describe "a pentago game" do
 	end
 
 	it "should end when 5 balls are in a row" do
-		pending
 		game = Game.new
 		game.place(1,0,'w')
 		game.place(1,1,'w')
