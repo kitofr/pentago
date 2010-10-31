@@ -43,7 +43,8 @@ describe "a square" do
 		sq[2] = %w{7 8 9}
 		square = Square.new sq
 		square.rotate! :left
-		square.to_s.should == %{369
+		square.to_s.should == 
+%{369
 258
 147}
 	end
