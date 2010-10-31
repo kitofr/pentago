@@ -3,9 +3,6 @@ class Game
 		@squares = []
 		4.times {	@squares << Square.new	}
 	end
-	def ended?
-		true
-	end
 	def find_square(x,y)
 		return square = x < 3 ? 0 : 1 if y < 3
 		square = x < 3 ? 2 : 3
