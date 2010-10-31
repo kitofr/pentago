@@ -123,8 +123,6 @@ describe "a pentago game" do
 789147}
 	end
 
-
-
 	it "should end when 5 balls are in a horizontal row"
 	it "should end when 5 balls are in a vertical row"
 
