@@ -1,8 +1,8 @@
 class Square
 	attr_reader :square
 
-	def initialize
-		@square = 3.times.collect{ %w{. . .} }
+	def initialize(square = 3.times.collect{ %w{. . .} })
+		@square = square
 	end
 	def place(x,y,who)
 		return false unless @square[x][y] == '.'

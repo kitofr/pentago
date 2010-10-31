@@ -1,21 +1,23 @@
 class Game
 	def initialize
 		@squares = []
-		4.times {
-			@squares << Square.new
-		}
-		tmp  = [@squares[0].zip(@squares[1])]
-		tmp[1] = @squares[2].zip(@squares[3])
-		@squares = tmp
-
+		4.times {	@squares << Square.new	}
 	end
 	def ended?
 		true
 	end
+	def find_square(x,y)
+		return square = x < 3 ? 0 : 1 if y < 3
+		square = x < 3 ? 2 : 3
+	end
 	def place(x,y,who)
-		raise "todo"
+		square = find_square(x,y)
+		#puts "", "[#{square}](#{x},#{y}) => #{x%3},#{y%3}"
+		@squares[square].place(x%2,y%2, who)
 	end
 	def to_s
-		@squares.collect{|square| square.collect{|row| row.join}.join "\n" }.join "\n"
+		tmp  = [@squares[0].zip(@squares[1])]
+		tmp[1] = @squares[2].zip(@squares[3])
+		tmp.collect{|square| square.collect{|row| row.join}.join "\n" }.join "\n"
 	end
 end

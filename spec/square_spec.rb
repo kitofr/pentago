@@ -26,14 +26,10 @@ describe "a square" do
 	end
 
 	it "should be able to rotate right" do
-		Square.class_eval{ 
-			def initialize
-				@square = [%w{1 2 3}]
-				@square[1] = %w{4 5 6}
-				@square[2] = %w{7 8 9}
-			end
-		}
-		square = Square.new
+		sq = [%w{1 2 3}]
+		sq[1] = %w{4 5 6}
+		sq[2] = %w{7 8 9}
+		square = Square.new sq
 		square.rotate! :right
 		square.to_s.should == %{741
 852
@@ -41,14 +37,10 @@ describe "a square" do
 	end
 
 	it "should be able to rotate left" do
-		Square.class_eval{ 
-			def initialize
-				@square = [%w{1 2 3}]
-				@square[1] = %w{4 5 6}
-				@square[2] = %w{7 8 9}
-			end
-		}
-		square = Square.new
+		sq = [%w{1 2 3}]
+		sq[1] = %w{4 5 6}
+		sq[2] = %w{7 8 9}
+		square = Square.new sq
 		square.rotate! :left
 		square.to_s.should == %{369
 258

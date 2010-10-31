@@ -10,13 +10,40 @@ describe "a pentago game" do
 ......
 ......}
 	end
-	it "should end when 5 balls are in a row" do
+
+	it "should not rotate game field when printing" do
+		sq = [%w{1 2 3}]
+		sq[1] = %w{4 5 6}
+		sq[2] = %w{7 8 9}
+		square = Square.new sq
+		
+		Square.stub(:new).and_return(square)
+
 		game = Game.new
-		game.place(0,1,'w')
-		game.place(0,2,'w')
-		game.place(0,3,'w')
-		game.place(0,4,'w')
-		game.place(0,5,'w')
+		game.to_s.should == %{123123
+456456
+789789
+123123
+456456
+789789}
+	end	
+
+	it "should be able to locate different squares" do
+		game = Game.new
+		game.find_square(0,0).should be 0
+		game.find_square(3,0).should be 1
+		game.find_square(0,3).should be 2
+		game.find_square(3,3).should be 3
+	end
+
+	it "should end when 5 balls are in a row" do
+		pending
+		game = Game.new
+		game.place(1,0,'w')
+		game.place(1,1,'w')
+		game.place(1,2,'w')
+		game.place(1,3,'w')
+		game.place(1,4,'w')
 		game.ended?.should be true
 		game.to_s.should == %{.w....
 .w....
