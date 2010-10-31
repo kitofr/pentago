@@ -5,8 +5,8 @@ class Square
 		@square = square
 	end
 	def place(x,y,who)
-		return false unless @square[x][y] == '.'
-		@square[x][y] = who
+		return false unless @square[y][x] == '.'
+		@square[y][x] = who
 	end
 	def rotate!(direction)
 		return right_rotate! if direction == :right

@@ -12,7 +12,7 @@ class Game
 	end
 	def place(x,y,who)
 		square = find_square(x,y)
-		#puts "", "[#{square}](#{x},#{y}) => #{x%3},#{y%3}"
+		puts "", "[#{square}](#{x},#{y}) => #{x%3},#{y%3}"
 		@squares[square].place(x%2,y%2, who)
 	end
 	def to_s

@@ -45,6 +45,20 @@ describe "a square" do
 		square.to_s.should == %{369
 258
 147}
-
+	end
+	it "should be able to place balls all over" do
+		square = Square.new
+		square.place(0,0, '1')
+		square.place(0,1, '2')
+		square.place(0,2, '3')
+		square.place(1,0, '4')
+		square.place(1,1, '5')
+		square.place(1,2, '6')
+		square.place(2,0, '7')
+		square.place(2,1, '8')
+		square.place(2,2, '9')
+		square.to_s.should == %{147
+258
+369}
 	end
 end
