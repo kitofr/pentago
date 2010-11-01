@@ -25,6 +25,7 @@ describe "a pentago game" do
 ......}
 	end
 
+	#TODO should probably use shared_examples_for
 	it "should not rotate game field when printing" do
 		sq = Square.new square
 		Square.stub(:new).and_return(sq)
