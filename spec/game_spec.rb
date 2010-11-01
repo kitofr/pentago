@@ -1,5 +1,19 @@
 require 'lib/pentago'
 
+def square
+	sq = [[1,2,3]]
+	sq[1] = [4,5,6]
+	sq[2] = [7,8,9]
+	sq
+end
+
+def squares
+	sqs = []
+	4.times { sqs << Square.new(square) }
+	sqs
+end
+
+
 describe "a pentago game" do
 	it "should consist of game field with 4 squares and 3x3 bit" do
 		game = Game.new
@@ -12,12 +26,8 @@ describe "a pentago game" do
 	end
 
 	it "should not rotate game field when printing" do
-		sq = [%w{1 2 3}]
-		sq[1] = %w{4 5 6}
-		sq[2] = %w{7 8 9}
-		square = Square.new sq
-		
-		Square.stub(:new).and_return(square)
+		sq = Square.new square
+		Square.stub(:new).and_return(sq)
 
 		game = Game.new
 		game.to_s.should == %{123123
@@ -53,12 +63,7 @@ describe "a pentago game" do
 	end
 
 	it "should be possible to rotate first square" do
-		sq = [%w{1 2 3}]
-		sq[1] = %w{4 5 6}
-		sq[2] = %w{7 8 9}
-		squares = []
-		4.times { squares << Square.new(sq) }
-		
+				
 		game = Game.create squares
 		game.rotate(0, :right)
 		game.to_s.should == 
@@ -71,12 +76,6 @@ describe "a pentago game" do
 	end
 
 	it "should be possible to rotate second square" do
-		sq = [%w{1 2 3}]
-		sq[1] = %w{4 5 6}
-		sq[2] = %w{7 8 9}
-		squares = []
-		4.times { squares << Square.new(sq) }
-		
 		game = Game.create squares
 		game.rotate(1, :right)
 		game.to_s.should == 
@@ -89,12 +88,6 @@ describe "a pentago game" do
 	end
 
 	it "should be possible to rotate third square" do
-		sq = [%w{1 2 3}]
-		sq[1] = %w{4 5 6}
-		sq[2] = %w{7 8 9}
-		squares = []
-		4.times { squares << Square.new(sq) }
-		
 		game = Game.create squares
 		game.rotate(2, :right)
 		game.to_s.should == 
@@ -107,12 +100,6 @@ describe "a pentago game" do
 	end
 
 	it "should be possible to rotate fourth square" do
-		sq = [%w{1 2 3}]
-		sq[1] = %w{4 5 6}
-		sq[2] = %w{7 8 9}
-		squares = []
-		4.times { squares << Square.new(sq) }
-		
 		game = Game.create squares
 		game.rotate(3, :left)
 		game.to_s.should == 
