@@ -1,0 +1,9 @@
+This is an atempt to implement the pentago game
+I will start off by implementing the game logics and
+making it possible to "play" the game in some manner
+In the longer term thoughts are:
+
+* Create AI to play against
+* Create a javascript enabled site to "play on"
+* Make a programmable interface so that you can 
+  compete with AI against AI :)
