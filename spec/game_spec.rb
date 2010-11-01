@@ -63,7 +63,6 @@ describe "a pentago game" do
 	end
 
 	it "should be possible to rotate first square" do
-				
 		game = Game.create squares
 		game.rotate(0, :right)
 		game.to_s.should == 
