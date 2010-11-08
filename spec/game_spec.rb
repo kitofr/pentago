@@ -63,55 +63,73 @@ describe "a pentago game" do
 ....!.}
 	end
 
-	it "should be possible to rotate first square" do
-		game = Game.create squares
-		game.rotate(0, :right)
-		game.to_s.should == 
+  context 'rotations' do
+	  it "should be possible to rotate first square" do
+		  game = Game.create squares
+		  game.rotate(0, :right)
+		  game.to_s.should == 
 %{741123
 852456
 963789
 123123
 456456
 789789}
-	end
+	  end
 
-	it "should be possible to rotate second square" do
-		game = Game.create squares
-		game.rotate(1, :right)
-		game.to_s.should == 
+	  it "should be possible to rotate second square" do
+		  game = Game.create squares
+		  game.rotate(1, :right)
+		  game.to_s.should == 
 %{123741
 456852
 789963
 123123
 456456
 789789}
-	end
+	  end
 
-	it "should be possible to rotate third square" do
-		game = Game.create squares
-		game.rotate(2, :right)
-		game.to_s.should == 
+	  it "should be possible to rotate third square" do
+		  game = Game.create squares
+		  game.rotate(2, :right)
+		  game.to_s.should == 
 %{123123
 456456
 789789
 741123
 852456
 963789}
-	end
+    end
 
-	it "should be possible to rotate fourth square" do
-		game = Game.create squares
-		game.rotate(3, :left)
-		game.to_s.should == 
+	  it "should be possible to rotate fourth square" do
+	  	game = Game.create squares
+	  	game.rotate(3, :left)
+	  	game.to_s.should == 
 %{123123
 456456
 789789
 123369
 456258
 789147}
-	end
+	  end
+  end
+	it "should end when 5 balls are in a horizontal row" do
+    game = Game.new
+    game.place(0,0,'w')
+    game.place(1,0,'w')
+    game.place(2,0,'w')
+    game.place(3,0,'w')
+    game.finished?.should be_false
+    game.place(4,0,'w')
+    game.finished?.should be_true
+    game.to_s.should == 
+%{wwwww.
+......
+......
+......
+......
+......}
+  end
 
-	it "should end when 5 balls are in a horizontal row"
 	it "should end when 5 balls are in a vertical row"
 	it "should end when 5 balls are in a diagonal row"
 

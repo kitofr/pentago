@@ -20,6 +20,11 @@ class Game
 		sq = @squares[square]
 		sq.rotate! direction
 	end
+  def finished?
+    tmp  = [@squares[0].zip(@squares[1])]
+		tmp[1] = @squares[2].zip(@squares[3])
+    tmp.flatten.count{ |v| v == 'w' } == 5
+  end
 	def to_s
 		tmp  = [@squares[0].zip(@squares[1])]
 		tmp[1] = @squares[2].zip(@squares[3])
