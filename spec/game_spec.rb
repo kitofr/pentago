@@ -148,6 +148,7 @@ describe "a pentago game" do
         game.finished?.should be_false
       end
     end
+
   end
 
   context "a turn" do
@@ -167,4 +168,30 @@ end
 describe "a player" do
   it "has 18 balls to place"
   it "is either white or black"
+end
+
+class Array
+  def has_5_in_a_row?
+    cnt = 0
+    self.each_index do |x, i|
+    end
+    nil
+  end
+end
+
+describe "an array" do
+  it "should know if it doesn't have 5 in a row of 6" do
+    pending
+    %w{. . . . . .}.has_5_in_a_row?.should be_false
+    %w{w w w w . w}.has_5_in_a_row?.should be_false
+    %w{w w w . w w}.has_5_in_a_row?.should be_false
+    %w{w w . w w w}.has_5_in_a_row?.should be_false
+    %w{w . w w w w}.has_5_in_a_row?.should be_false
+  end
+
+  it "should know if it does have 5 in a row" do
+    pending
+    %w{w w w w w .}.has_5_in_a_row?.should be_true
+    %w{. w w w w w}.has_5_in_a_row?.should be_true
+  end
 end
