@@ -126,12 +126,14 @@ describe "a pentago game" do
         end
 
         it "could have 5 balls in a vertical (#{columns.inspect}) column: #{row}" do
-          game = Game.new
-          columns.each do |column| 
-            game.finished?.should be_false
-            game.place(row, column, 'w') 
+          pending do
+            game = Game.new
+            columns.each do |column| 
+              game.finished?.should be_false
+              game.place(row, column, 'w') 
+            end
+            game.finished?.should be_true
           end
-          game.finished?.should be_true
         end
       end
     end
@@ -140,15 +142,12 @@ describe "a pentago game" do
 
   context "when still on" do
     it "has no 5 balls adjacent" do
-      pending do
-        game = Game.new
-        [0,1,2,3,5].each do |column|
-          game.place(column, 0, 'w')
-        end
-        game.finished?.should be_false
+      game = Game.new
+      [0,1,2,3,5].each do |column|
+        game.place(column, 0, 'w')
       end
+      game.finished?.should be_false
     end
-
   end
 
   context "a turn" do
