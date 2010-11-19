@@ -32,16 +32,19 @@ class Game
       horizontal.shift(6)
     end
 		
-		#TODO this as well :)
-		vertical = tmp.flatten
+		skip_6 = lambda { |array, i|
+			@i = @i.nil? ? i : @i + 6 
+			@i = i if @i >= array.length
+			array[@i]
+		}
+		
+		game = tmp.flatten
 		6.times do 
-			i = 0
 			y = []
-			begin
-				y << vertical[i]
-				i += 6
-			end until i >= vertical.length
-			vertical.shift(1)
+			6.times do |i|
+				y << skip_6.call( game, i)
+			end
+			game.shift(1)
 			return true if y.has_5_in_a_row?
 		end
 

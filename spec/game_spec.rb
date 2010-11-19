@@ -135,6 +135,7 @@ describe "a pentago game" do
 				end
 			end
 		end
+
 		it "when 5 balls are in a diagonal row"
 	end
 
