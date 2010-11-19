@@ -24,6 +24,7 @@ class Game
     tmp  = [@squares[0].zip(@squares[1])]
 		tmp[1] = @squares[2].zip(@squares[3])
     
+		#TODO this should surely be done differently :)
     horizontal = tmp.flatten
     6.times do |i|
       x = horizontal.take(6)
@@ -31,8 +32,8 @@ class Game
       horizontal.shift(6)
     end
 		
+		#TODO this as well :)
 		vertical = tmp.flatten
-
 		6.times do 
 			i = 0
 			y = []
