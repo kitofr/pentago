@@ -24,12 +24,26 @@ class Game
     tmp  = [@squares[0].zip(@squares[1])]
 		tmp[1] = @squares[2].zip(@squares[3])
     
-    tmp.flatten!
+    horizontal = tmp.flatten
     6.times do |i|
-      x = tmp.take(6)
+      x = horizontal.take(6)
       return true if x.has_5_in_a_row?
-      tmp.shift(6)
+      horizontal.shift(6)
     end
+		
+		vertical = tmp.flatten
+
+		6.times do 
+			i = 0
+			y = []
+			begin
+				y << vertical[i]
+				i += 6
+			end until i >= vertical.length
+			vertical.shift(1)
+			return true if y.has_5_in_a_row?
+		end
+
     false
   end
 	def to_s

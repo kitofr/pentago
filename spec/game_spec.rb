@@ -125,47 +125,45 @@ describe "a pentago game" do
           game.finished?.should be_true
         end
 
-        it "could have 5 balls in a vertical (#{columns.inspect}) column: #{row}" do
-          pending do
-            game = Game.new
-            columns.each do |column| 
-              game.finished?.should be_false
-              game.place(row, column, 'w') 
-            end
-            game.finished?.should be_true
-          end
-        end
-      end
-    end
-    it "when 5 balls are in a diagonal row"
-  end
+				it "could have 5 balls in a vertical (#{columns.inspect}) column: #{row}" do
+					game = Game.new
+					columns.each do |column| 
+						game.finished?.should be_false
+						game.place(row, column, 'w') 
+					end
+					game.finished?.should be_true
+				end
+			end
+		end
+		it "when 5 balls are in a diagonal row"
+	end
 
-  context "when still on" do
-    it "has no 5 balls adjacent" do
-      game = Game.new
-      [0,1,2,3,5].each do |column|
-        game.place(column, 0, 'w')
-      end
-      game.finished?.should be_false
-    end
-  end
+	context "when still on" do
+		it "has no 5 balls adjacent" do
+			game = Game.new
+			[0,1,2,3,5].each do |column|
+				game.place(column, 0, 'w')
+			end
+			game.finished?.should be_false
+		end
+	end
 
-  context "a turn" do
-    it "can end prematurely if the player places a ball in such way that it completes the game (without a turn)"
-    it "is one ball placement and a square rotation"
-  end
+	context "a turn" do
+		it "can end prematurely if the player places a ball in such way that it completes the game (without a turn)"
+		it "is one ball placement and a square rotation"
+	end
 
-  it "should be a draw if both players has 5 balls in a row after a completed turn"
+	it "should be a draw if both players has 5 balls in a row after a completed turn"
 
-  context "is turn based" do
-    it "should have 2 players"
-    it "and starts by the white player placing a ball"
-    it "and after white, the black player place a ball"
-  end
+	context "is turn based" do
+		it "should have 2 players"
+		it "and starts by the white player placing a ball"
+		it "and after white, the black player place a ball"
+	end
 end
 
 describe "a player" do
-  it "has 18 balls to place"
-  it "is either white or black"
+	it "has 18 balls to place"
+	it "is either white or black"
 end
 
