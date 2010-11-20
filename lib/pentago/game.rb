@@ -32,17 +32,13 @@ class Game
       horizontal.shift(6)
     end
 		
-		skip_6 = lambda { |array, i|
-			@i = @i.nil? ? i : @i + 6 
-			@i = i if @i >= array.length
-			array[@i]
-		}
-		
 		game = tmp.flatten
 		6.times do 
 			y = []
 			6.times do |i|
-				y << skip_6.call( game, i)
+				skip_6( game, i) do |v|
+					y << v
+				end
 			end
 			game.shift(1)
 			return true if y.has_5_in_a_row?
@@ -50,6 +46,13 @@ class Game
 
     false
   end
+
+	def skip_6(array,i)
+		@i = i if @i.nil? || @i >= array.length
+		yield array[@i]
+		@i += 6
+	end
+
 	def to_s
 		tmp  = [@squares[0].zip(@squares[1])]
 		tmp[1] = @squares[2].zip(@squares[3])
