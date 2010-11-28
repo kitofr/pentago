@@ -9,14 +9,20 @@ describe "an array" do
     %w{w . w w w w}.has_5_in_a_row?.should be_false
   end
 
-	it "should know that it is of same kind" do
-		pending do
-	    %w{w w w b w w}.has_5_in_a_row?.should be_false
-		end
-	end
-
-  it "should know if it does have 5 in a row" do
-    %w{w w w w w .}.has_5_in_a_row?.should be_true
-    %w{. w w w w w}.has_5_in_a_row?.should be_true
+  [%w{w w w w w .}, 
+   %w{. w w w w w}].each do |array|
+    it "should know if it does have 5 in a row #{array.inspect}" do
+      array.has_5_in_a_row?.should be_true
+    end
   end
+
+  [%w{w b w w w w},
+   %w{w w b w w w},
+   %w{w w w b w w},
+   %w{w w w w b w}
+  ].each do |array|
+    it "should know that it is of same kind #{array.inspect}" do
+      array.has_5_in_a_row?.should be_false
+    end
+   end
 end
