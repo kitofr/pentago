@@ -5,7 +5,7 @@ class Array
       item = self[i]
 			prev = self[i-1]
 
-			cnt = (item != '.') && (prev && item == prev || prev == '.') ? cnt + 1 : 0
+			cnt = (item != '.') && (item == prev || prev == '.') ? cnt + 1 : 0
       break if cnt == 5
     end
     cnt == 5
