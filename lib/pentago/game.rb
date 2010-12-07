@@ -21,7 +21,6 @@ class Game
 		sq.rotate! direction
 	end
 
-  include Rules
   def finished?
     tmp = zip_squares(@squares, [[0,1],[2,3]])
     return true if has_5_in_a_row? tmp.flatten
@@ -31,11 +30,6 @@ class Game
 
     false
   end
-	def skip_6(array,i)
-		@i = i if @i.nil? || @i >= array.length
-		yield array[@i]
-		@i += 6
-	end
 	def to_s
 		tmp  = [@squares[0].zip(@squares[1])]
 		tmp[1] = @squares[2].zip(@squares[3])
@@ -45,6 +39,14 @@ class Game
 		@squares = squares
 	end
   private
+  def has_5_in_a_row?(game_field)
+    6.times do |i|
+      x = game_field.take(6)
+      return true if x.has_5_in_a_row?
+      game_field.shift(6)
+    end
+    false
+  end
   def zip_squares(squares, order)
     order.collect{|a,b| squares[a].zip(squares[b])}
   end
