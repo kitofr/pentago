@@ -21,14 +21,9 @@ class Game
 		sq.rotate! direction
 	end
 
+  include Rules
   def finished?
-    tmp = zip_squares(@squares, [[0,1],[2,3]])
-    return true if has_5_in_a_row? tmp.flatten
-		
-    tmp = zip_squares(turn_field_left, [[0,1],[2,3]])
-    return true if has_5_in_a_row? tmp.flatten
-
-    false
+    game_ended?(@squares)
   end
 	def to_s
 		tmp  = [@squares[0].zip(@squares[1])]
@@ -38,19 +33,4 @@ class Game
 	def squares=(squares)
 		@squares = squares
 	end
-  private
-  def has_5_in_a_row?(game_field)
-    6.times do |i|
-      x = game_field.take(6)
-      return true if x.has_5_in_a_row?
-      game_field.shift(6)
-    end
-    false
-  end
-  def zip_squares(squares, order)
-    order.collect{|a,b| squares[a].zip(squares[b])}
-  end
-  def turn_field_left
-    [1,3,0,2].collect { |i| @squares[i].rotate(:left) }
-  end
 end
