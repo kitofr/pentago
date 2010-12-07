@@ -8,10 +8,15 @@ class Square
 		return false unless @square[y][x] == '.'
 		@square[y][x] = who
 	end
+  def rotate(direction)
+    other = self.clone
+    other.rotate! direction
+    other
+  end
 	def rotate!(direction)
 		return right_rotate! if direction == :right
 		3.times{ right_rotate! }
-		#TODO fail if not left?
+    self
 	end
 	def zip(with)
 		@square.zip(with.square)

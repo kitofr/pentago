@@ -20,39 +20,22 @@ class Game
 		sq = @squares[square]
 		sq.rotate! direction
 	end
+
+  include Rules
   def finished?
-    tmp  = [@squares[0].zip(@squares[1])]
-		tmp[1] = @squares[2].zip(@squares[3])
-    
-		#TODO this should surely be done differently :)
-    horizontal = tmp.flatten
-    6.times do |i|
-      x = horizontal.take(6)
-      return true if x.has_5_in_a_row?
-      horizontal.shift(6)
-    end
+    tmp = zip_squares(@squares, [[0,1],[2,3]])
+    return true if has_5_in_a_row? tmp.flatten
 		
-		game = tmp.flatten
-		6.times do 
-			y = []
-			6.times do |i|
-				skip_6( game, i) do |v|
-					y << v
-				end
-			end
-			game.shift(1)
-			return true if y.has_5_in_a_row?
-		end
+    tmp = zip_squares(turn_field_left, [[0,1],[2,3]])
+    return true if has_5_in_a_row? tmp.flatten
 
     false
   end
-
 	def skip_6(array,i)
 		@i = i if @i.nil? || @i >= array.length
 		yield array[@i]
 		@i += 6
 	end
-
 	def to_s
 		tmp  = [@squares[0].zip(@squares[1])]
 		tmp[1] = @squares[2].zip(@squares[3])
@@ -61,4 +44,11 @@ class Game
 	def squares=(squares)
 		@squares = squares
 	end
+  private
+  def zip_squares(squares, order)
+    order.collect{|a,b| squares[a].zip(squares[b])}
+  end
+  def turn_field_left
+    [1,3,0,2].collect { |i| @squares[i].rotate(:left) }
+  end
 end
