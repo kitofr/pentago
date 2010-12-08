@@ -1,4 +1,21 @@
 describe "game rules" do
+  context "turn field left" do
+    it "should look like the field just did, only tilted to the left one step" do
+      pending
+    end
+  end
+  
+  context "zip squares" do
+    it "should hold a sequence of squares in a specified order"
+  end
+
+  context "has 5 in a row" do
+    it "should determine if a sequence of squares has 5 in a row"
+  end
+
+  context "game ended" do
+  end
+
   context "when finished" do
     (0..5).each do |row|
       [[0,1,2,3,4],[1,2,3,4,5]].each do |columns|
