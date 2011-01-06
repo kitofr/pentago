@@ -15,6 +15,7 @@ class Square
   end
 	def rotate!(direction)
 		return right_rotate! if direction == :right
+    raise NoSuchDirectionError if direction != :left
 		3.times{ right_rotate! }
     self
 	end

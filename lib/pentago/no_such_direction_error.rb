@@ -1,0 +1,4 @@
+class NoSuchDirectionError < RuntimeError
+end
+
+

@@ -48,6 +48,11 @@ describe "a square" do
 258
 147}
 	end
+  it "should only support :left and :right" do
+    square = Square.new
+    lambda{ square.rotate!(:kek) }.should raise_error(NoSuchDirectionError)
+  end
+
 	it "should be able to place balls all over" do
 		square = Square.new
 		square.place(0,0, '1')

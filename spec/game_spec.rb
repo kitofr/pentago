@@ -111,12 +111,8 @@ describe "a pentago game" do
 456258
 789147}
 	  end
+    
   end
-
-	context "a turn" do
-		it "can end prematurely if the player places a ball in such way that it completes the game (without a turn)"
-		it "is one ball placement and a square rotation"
-	end
 
 	it "should be a draw if both players has 5 balls in a row after a completed turn"
 
