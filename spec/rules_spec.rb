@@ -1,7 +1,18 @@
+require 'lib/pentago'
+
 describe "game rules" do
+  include Rules
+
   context "turn field left" do
     it "should look like the field just did, only tilted to the left one step" do
-      pending
+		  game = Game.create turn_field_left(squares)
+      game.to_s.should == %{
+369369
+258258
+147147
+369369
+258258
+147147}.strip
     end
   end
   

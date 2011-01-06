@@ -24,5 +24,4 @@ module Rules
   def turn_field_left(squares)
     [1,3,0,2].collect { |i| squares[i].rotate(:left) }
   end
-
 end
