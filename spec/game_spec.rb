@@ -117,6 +117,7 @@ describe "a pentago game" do
 	it "should be a draw if both players has 5 balls in a row after a completed turn"
 
 	context "is turn based" do
+    it "can end prematurely if the player places a ball in such way that it completes the game (without a turn)"
 		it "should have 2 players"
 		it "and starts by the white player placing a ball"
 		it "and after white, the black player place a ball"

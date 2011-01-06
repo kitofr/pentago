@@ -1,28 +1,5 @@
 require 'lib/pentago'
 
-class Turn
-  def initialize(game, player)
-    @game, @player = game, player
-    @done = false
-  end
-  def place(x,y)
-    @x,@y = x,y
-    self
-  end
-  def rotate(square, direction)
-    @square, @direction = square, direction
-    self
-  end
-  def execute!
-    @game.place(@x,@y, @player)
-    @game.rotate(@square, @direction)
-    @done = true
-  end
-  def is_done?
-    @done
-  end
-end
-
 describe "a turn" do
   it "is defined by a ball placement follwed by a rotation" do
     game = Game.new
@@ -59,8 +36,4 @@ describe "a turn" do
     turn = Turn.new(game, :w).place(0,0).rotate(0,:right)
     turn.execute!
  end 
-
-  it "can end prematurely if the player places a ball in such way that it completes the game (without a turn)"
 end
-
-
