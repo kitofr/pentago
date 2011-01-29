@@ -50,8 +50,19 @@ describe "game rules" do
 			end
 		end
 
-		it "when 5 balls are in a diagonal row"
-	end
+		it "when 5 balls are in a diagonal row" do
+      pending do
+        game = Game.new
+        game.place(0,0, 'w')
+        game.place(1,1, 'w')
+        game.place(2,2, 'w')
+        game.place(3,3, 'w')
+        game.finished?.should be_false
+        game.place(4,4, 'w')
+        game.finished?.should be_true
+      end
+    end
+  end
   context "when still on" do
     it "has no 5 balls adjacent" do
       game = Game.new

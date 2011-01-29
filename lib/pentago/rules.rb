@@ -8,7 +8,6 @@ module Rules
 
     false
   end
-
   def has_5_in_a_row?(zipped_squares)
     game_field = zipped_squares.flatten
     6.times do |i|

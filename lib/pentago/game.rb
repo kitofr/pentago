@@ -1,4 +1,5 @@
 class Game
+  include Rules
 	def self.create(squares)
 		game = Game.new
 		game.squares = squares
@@ -20,16 +21,28 @@ class Game
 		sq = @squares[square]
 		sq.rotate! direction
 	end
-
-  include Rules
   def finished?
-    game_ended?(@squares)
+    game_ended? @squares
   end
 	def to_s
 		tmp  = [@squares[0].zip(@squares[1])]
 		tmp[1] = @squares[2].zip(@squares[3])
 		tmp.collect{|square| square.collect{|row| row.join}.join "\n" }.join "\n"
 	end
+  def pretty
+		tmp  = [@squares[0].zip(@squares[1])]
+		tmp[1] = @squares[2].zip(@squares[3])
+    
+    x = tmp.flatten
+    cnt = 0
+    acc = ""
+    6.times do
+      acc << "-----------------\n" if cnt % 18 == 0
+      acc << "| #{x[cnt..cnt + 2].collect { |z| z }.join(" ")  } | #{x[cnt + 3.. cnt + 5].collect { |z| z }.join(" ")} |\n"
+      cnt += 6
+    end
+    acc << "-----------------\n"
+  end
 	def squares=(squares)
 		@squares = squares
 	end
