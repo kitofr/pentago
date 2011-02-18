@@ -1,5 +1,19 @@
 class Game
+  attr_accessor :squares
   include Rules
+
+  def self.numbered
+    game = Game.new
+    cnt = 0
+    for x in (0..5) do
+      for y in (0..5) do
+        game.place(y,x,cnt)
+        cnt += 1
+      end
+    end
+    game
+  end
+
 	def self.create(squares)
 		game = Game.new
 		game.squares = squares
@@ -43,7 +57,7 @@ class Game
     end
     acc << "-----------------\n"
   end
-	def squares=(squares)
-		@squares = squares
-	end
+	#def squares=(squares)
+	#	@squares = squares
+	#end
 end

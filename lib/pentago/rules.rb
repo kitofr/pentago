@@ -6,6 +6,11 @@ module Rules
     tmp = zip_squares(turn_field_left(squares), [[0,1],[2,3]])
     return true if has_5_in_a_row? tmp
 
+    c = []
+    tmp = zip_squares(squares, [[0,1],[2,3]]).flatten
+    [0,1,6].each{ |x| x.step(tmp.length, 7){|i| c << tmp[i] }}
+    return true if c.has_5_in_a_row?
+
     false
   end
   def has_5_in_a_row?(zipped_squares)
