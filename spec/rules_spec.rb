@@ -1,4 +1,4 @@
-require 'lib/pentago'
+require 'spec_helper'
 
 describe "game rules" do
   include Rules

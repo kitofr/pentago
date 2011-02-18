@@ -1,4 +1,4 @@
-require 'lib/pentago'
+require 'spec_helper'
 
 describe "an array" do
   it "should know if it doesn't have 5 in a row of 6" do

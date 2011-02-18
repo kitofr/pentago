@@ -1,10 +1,10 @@
 require 'rubygems'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task' #/rake/spectask'
 
 task :default => ['spec']
 
 desc "Run SpecTest"
-Spec::Rake::SpecTask.new do |t|
-   t.spec_opts = ["--colour", "--format", "nested"]
-   t.spec_files = FileList['spec/**/*_spec*.rb']
+RSpec::Core::RakeTask.new do |t|
+   t.rspec_opts = ["--colour", "--format", "nested"]
+   t.pattern = FileList['spec/**/*_spec*.rb']
 end

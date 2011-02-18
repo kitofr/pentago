@@ -1,4 +1,4 @@
-require 'lib/pentago'
+require 'spec_helper'
 
 describe "a square" do
 	it "should consist of 3x3 bits" do

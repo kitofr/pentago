@@ -1,4 +1,4 @@
-require 'lib/pentago'
+require 'spec_helper'
 
 describe "a turn" do
   it "is defined by a ball placement follwed by a rotation" do

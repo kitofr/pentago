@@ -1,4 +1,4 @@
-require 'lib/pentago'
+require 'spec_helper'
 require 'game_helpers'
 
 describe "a pentago game" do
