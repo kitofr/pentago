@@ -39,15 +39,12 @@ class Game
     game_ended? @squares
   end
 	def to_s
-		tmp  = [@squares[0].zip(@squares[1])]
-		tmp[1] = @squares[2].zip(@squares[3])
+    tmp = squares_to_array(squares)
 		tmp.collect{|square| square.collect{|row| row.join}.join "\n" }.join "\n"
 	end
   def pretty
-		tmp  = [@squares[0].zip(@squares[1])]
-		tmp[1] = @squares[2].zip(@squares[3])
+    x = squares_to_array(squares).flatten
     
-    x = tmp.flatten
     cnt = 0
     acc = ""
     6.times do

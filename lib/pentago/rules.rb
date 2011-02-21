@@ -1,13 +1,13 @@
 module Rules
   def game_ended?(squares)
-    tmp = zip_squares(squares, [[0,1],[2,3]])
+    tmp = squares_to_array(squares)
     return true if has_5_in_a_row? tmp
 		
     tmp = zip_squares(turn_field_left(squares), [[0,1],[2,3]])
     return true if has_5_in_a_row? tmp
 
     c = []
-    tmp = zip_squares(squares, [[0,1],[2,3]]).flatten
+    tmp = squares_to_array(squares).flatten
     [0,1,6].each{ |x| x.step(tmp.length, 7){|i| c << tmp[i] }}
     return true if c.has_5_in_a_row?
 
@@ -21,6 +21,9 @@ module Rules
       game_field.shift(6)
     end
     false
+  end
+  def squares_to_array(squares)
+    zip_squares(squares, [[0,1],[2,3]])
   end
   def zip_squares(squares, order)
     order.collect{|a,b| squares[a].zip(squares[b])}
